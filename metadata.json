@@ -1,0 +1,6 @@
+{
+  "name": "Funngro Redesign — Company & Teen Talent Platform",
+  "description": "Unofficial two-page website redesign of Funngro connecting companies with skilled teen freelancers across web development, content creation, testing, and marketing.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
