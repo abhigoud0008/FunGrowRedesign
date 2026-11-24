@@ -1,6 +1,5 @@
 import { useState, type FormEvent } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { ArrowRight, Check, Send, CheckCircle2 } from 'lucide-react';
 import {
   CAMPAIGN_OPPORTUNITIES,
@@ -9,6 +8,7 @@ import {
   HIRING_PROCESS,
   TALENT_CATEGORIES,
 } from '../data/companyData';
+import { MEDIA_ASSETS } from '../data/mediaAssets';
 import { validateCompanyInquiry, type CompanyInquiryInput } from '../lib/filters';
 import { cn } from '../lib/utils';
 import { SeoHead } from '../components/SeoHead';
@@ -73,12 +73,7 @@ export function CompanyPage() {
 
         <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-12 lg:gap-12">
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col justify-center lg:col-span-6"
-            >
+            <div className="flex flex-col justify-center lg:col-span-6">
               <p className="text-sm font-medium tracking-wide text-emerald-400">
                 Funngro for Companies · Supervised Youth Talent
               </p>
@@ -108,23 +103,18 @@ export function CompanyPage() {
                   Explore Teen Experience
                 </Link>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-6"
-            >
+            <div className="lg:col-span-6">
               <MediaFrame
-                src="/src/assets/images/hero_company_workspace_1795535470034.jpg"
+                asset={MEDIA_ASSETS.heroCompany}
                 alt="Startup team and young digital specialists reviewing wireframes and product dashboards together in a modern workspace"
                 aspectClassName="aspect-video lg:aspect-auto lg:min-h-[360px]"
                 className="h-full"
                 priority
                 caption="Collaborative project sprints with milestone-based review and structured briefs."
               />
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -262,10 +252,11 @@ export function CompanyPage() {
 
             <div className="md:col-span-5">
               <MediaFrame
-                src={activeCategory.imageSrc}
+                asset={activeCategory.mediaAsset}
                 alt={activeCategory.imageAlt}
                 aspectClassName="aspect-[4/3] md:h-full"
                 className="h-full"
+                priority={false}
               />
             </div>
           </div>
@@ -463,10 +454,10 @@ export function CompanyPage() {
                         aria-invalid={Boolean(formErrors.fullName)}
                         aria-describedby={formErrors.fullName ? 'error-fullName' : undefined}
                         placeholder="Priya Nair"
-                        className="mt-1.5 w-full rounded-lg border border-slate-700/90 bg-[#060D1A] px-3.5 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
+                        className="mt-1.5 w-full rounded-lg border border-slate-700/90 bg-[#060D1A] px-3.5 py-2.5 text-sm text-slate-100 placeholder:text-slate-400 focus:border-emerald-400 focus:outline-none"
                       />
                       {formErrors.fullName && (
-                        <p id="error-fullName" className="mt-1.5 text-xs text-rose-400">
+                        <p id="error-fullName" className="mt-1.5 text-xs text-rose-300">
                           {formErrors.fullName}
                         </p>
                       )}
@@ -489,10 +480,10 @@ export function CompanyPage() {
                         aria-invalid={Boolean(formErrors.companyName)}
                         aria-describedby={formErrors.companyName ? 'error-companyName' : undefined}
                         placeholder="Kaveri Labs"
-                        className="mt-1.5 w-full rounded-lg border border-slate-700/90 bg-[#060D1A] px-3.5 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
+                        className="mt-1.5 w-full rounded-lg border border-slate-700/90 bg-[#060D1A] px-3.5 py-2.5 text-sm text-slate-100 placeholder:text-slate-400 focus:border-emerald-400 focus:outline-none"
                       />
                       {formErrors.companyName && (
-                        <p id="error-companyName" className="mt-1.5 text-xs text-rose-400">
+                        <p id="error-companyName" className="mt-1.5 text-xs text-rose-300">
                           {formErrors.companyName}
                         </p>
                       )}
@@ -515,10 +506,10 @@ export function CompanyPage() {
                         aria-invalid={Boolean(formErrors.workEmail)}
                         aria-describedby={formErrors.workEmail ? 'error-workEmail' : undefined}
                         placeholder="team@company.com"
-                        className="mt-1.5 w-full rounded-lg border border-slate-700/90 bg-[#060D1A] px-3.5 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
+                        className="mt-1.5 w-full rounded-lg border border-slate-700/90 bg-[#060D1A] px-3.5 py-2.5 text-sm text-slate-100 placeholder:text-slate-400 focus:border-emerald-400 focus:outline-none"
                       />
                       {formErrors.workEmail && (
-                        <p id="error-workEmail" className="mt-1.5 text-xs text-rose-400">
+                        <p id="error-workEmail" className="mt-1.5 text-xs text-rose-300">
                           {formErrors.workEmail}
                         </p>
                       )}
@@ -547,7 +538,7 @@ export function CompanyPage() {
                         ))}
                       </select>
                       {formErrors.category && (
-                        <p id="error-category" className="mt-1.5 text-xs text-rose-400">
+                        <p id="error-category" className="mt-1.5 text-xs text-rose-300">
                           {formErrors.category}
                         </p>
                       )}
@@ -570,10 +561,10 @@ export function CompanyPage() {
                       aria-invalid={Boolean(formErrors.projectBrief)}
                       aria-describedby={formErrors.projectBrief ? 'error-projectBrief' : undefined}
                       placeholder="Describe the deliverables, review criteria, and preferred completion window..."
-                      className="mt-1.5 w-full rounded-lg border border-slate-700/90 bg-[#060D1A] px-3.5 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:border-emerald-400 focus:outline-none"
+                      className="mt-1.5 w-full rounded-lg border border-slate-700/90 bg-[#060D1A] px-3.5 py-2.5 text-sm text-slate-100 placeholder:text-slate-400 focus:border-emerald-400 focus:outline-none"
                     />
                     {formErrors.projectBrief && (
-                      <p id="error-projectBrief" className="mt-1.5 text-xs text-rose-400">
+                      <p id="error-projectBrief" className="mt-1.5 text-xs text-rose-300">
                         {formErrors.projectBrief}
                       </p>
                     )}
@@ -600,3 +591,5 @@ export function CompanyPage() {
     </>
   );
 }
+
+export default CompanyPage;

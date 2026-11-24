@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import { Image as ImageIcon } from 'lucide-react';
 import { cn } from '../lib/utils';
+import type { MediaAsset } from '../data/mediaAssets';
 
 interface MediaFrameProps {
-  src: string;
+  asset: MediaAsset;
   alt: string;
   aspectClassName?: string;
   className?: string;
@@ -12,11 +13,11 @@ interface MediaFrameProps {
 }
 
 /**
- * Resilient image container with CLS prevention, descriptive alt text,
- * and automatic CSS/SVG fallback if loading fails.
+ * Resilient responsive <picture> container with AVIF/WebP sources, explicit
+ * dimensions for zero CLS, priority LCP hints for hero media, and fallback UI.
  */
 export function MediaFrame({
-  src,
+  asset,
   alt,
   aspectClassName = 'aspect-video',
   className,
@@ -34,15 +35,24 @@ export function MediaFrame({
     >
       <div className={cn('relative w-full flex-1 min-h-0 overflow-hidden', aspectClassName)}>
         {!hasError ? (
-          <img
-            src={src}
-            alt={alt}
-            loading={priority ? 'eager' : 'lazy'}
-            decoding={priority ? 'sync' : 'async'}
-            referrerPolicy="no-referrer"
-            onError={() => setHasError(true)}
-            className="h-full w-full object-cover object-center transition-transform duration-500 ease-out"
-          />
+          <picture className="block h-full w-full">
+            <source type="image/avif" srcSet={asset.avifSrcSet} sizes={asset.sizes} />
+            <source type="image/webp" srcSet={asset.webpSrcSet} sizes={asset.sizes} />
+            <img
+              src={asset.fallbackSrc}
+              srcSet={asset.webpSrcSet}
+              sizes={asset.sizes}
+              width={asset.width}
+              height={asset.height}
+              alt={alt}
+              loading={priority ? 'eager' : 'lazy'}
+              decoding={priority ? 'sync' : 'async'}
+              fetchPriority={priority ? 'high' : 'auto'}
+              referrerPolicy="no-referrer"
+              onError={() => setHasError(true)}
+              className="h-full w-full object-cover object-center transition-transform duration-500 ease-out"
+            />
+          </picture>
         ) : (
           <div
             role="img"
@@ -59,7 +69,7 @@ export function MediaFrame({
         />
       </div>
       {caption && (
-        <figcaption className="border-t border-slate-800/80 bg-[#091224] px-4 py-2.5 text-xs text-slate-400">
+        <figcaption className="border-t border-slate-800/80 bg-[#091224] px-4 py-2.5 text-xs text-slate-300">
           {caption}
         </figcaption>
       )}

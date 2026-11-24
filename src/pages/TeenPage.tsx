@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
 import { ArrowRight, ArrowUpRight, Check, Smartphone } from 'lucide-react';
 import {
   ILLUSTRATIVE_PROJECTS,
@@ -11,6 +10,7 @@ import {
   TEEN_HOW_IT_WORKS,
   type TeenCategoryId,
 } from '../data/teenData';
+import { MEDIA_ASSETS } from '../data/mediaAssets';
 import { filterProjectExamples } from '../lib/filters';
 import { cn } from '../lib/utils';
 import { SeoHead } from '../components/SeoHead';
@@ -38,12 +38,7 @@ export function TeenPage() {
 
         <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-12 lg:gap-12">
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-              className="flex flex-col justify-center lg:col-span-6"
-            >
+            <div className="flex flex-col justify-center lg:col-span-6">
               <p className="text-sm font-medium tracking-wide text-emerald-400">
                 Funngro for Teens · Learn, Build &amp; Earn Responsibly
               </p>
@@ -73,23 +68,18 @@ export function TeenPage() {
                   Browse Example Briefs
                 </a>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="lg:col-span-6"
-            >
+            <div className="lg:col-span-6">
               <MediaFrame
-                src="/src/assets/images/hero_teen_creator_1795535470988.jpg"
+                asset={MEDIA_ASSETS.heroTeen}
                 alt="Young Indian student creator coding and designing digital interfaces on a laptop at a tidy desk"
                 aspectClassName="aspect-video lg:aspect-auto lg:min-h-[360px]"
                 className="h-full"
                 priority
                 caption="Build verifiable portfolio work on remote briefs around your study schedule."
               />
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -262,9 +252,10 @@ export function TeenPage() {
               </p>
               <div className="mt-8">
                 <MediaFrame
-                  src="/src/assets/images/capability_web_engineering_1795535471362.jpg"
+                  asset={MEDIA_ASSETS.capabilityWeb}
                   alt="Laptop displaying clean responsive wireframes and frontend code side by side"
                   aspectClassName="aspect-[4/3]"
+                  priority={false}
                 />
               </div>
             </div>
@@ -368,3 +359,5 @@ export function TeenPage() {
     </>
   );
 }
+
+export default TeenPage;

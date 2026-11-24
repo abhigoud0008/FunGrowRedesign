@@ -4,21 +4,35 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App.tsx';
 import './index.css';
 
-const container = document.getElementById('root')!;
-const app = (
-  <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </StrictMode>
-);
+async function bootstrap() {
+  const container = document.getElementById('root')!;
+  const hasPrerenderedMarkup =
+    container.innerHTML.trim().length > 0 &&
+    !container.innerHTML.includes('<!--app-html-->');
 
-const hasPrerenderedMarkup =
-  container.innerHTML.trim().length > 0 &&
-  !container.innerHTML.includes('<!--app-html-->');
+  // Preload only the active route chunk before hydrating prerendered HTML
+  // to prevent Suspense fallback flash while preserving route code splitting.
+  if (hasPrerenderedMarkup) {
+    if (window.location.pathname.startsWith('/teen')) {
+      await import('./pages/TeenPage');
+    } else {
+      await import('./pages/CompanyPage');
+    }
+  }
 
-if (hasPrerenderedMarkup) {
-  hydrateRoot(container, app);
-} else {
-  createRoot(container).render(app);
+  const app = (
+    <StrictMode>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </StrictMode>
+  );
+
+  if (hasPrerenderedMarkup) {
+    hydrateRoot(container, app);
+  } else {
+    createRoot(container).render(app);
+  }
 }
+
+void bootstrap();

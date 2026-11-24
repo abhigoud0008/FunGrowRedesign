@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { cn } from '../../lib/utils';
 
 interface SpotlightProps {
@@ -8,16 +7,13 @@ interface SpotlightProps {
 
 /**
  * Aceternity UI Spotlight adapted to deep navy & emerald brand lighting.
- * Uses GPU-composited opacity/transform and respects reduced motion.
+ * Rendered without initial opacity fade so first paint & LCP remain unblocked.
  */
 export function Spotlight({ className, fill = '#10B981' }: SpotlightProps) {
   return (
-    <motion.svg
-      initial={{ opacity: 0, scale: 0.96 }}
-      animate={{ opacity: 0.22, scale: 1 }}
-      transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+    <svg
       className={cn(
-        'pointer-events-none absolute z-0 h-[140%] w-[120%] lg:w-[82%]',
+        'pointer-events-none absolute z-0 h-[140%] w-[120%] opacity-[0.22] lg:w-[82%]',
         className
       )}
       xmlns="http://www.w3.org/2000/svg"
@@ -51,6 +47,6 @@ export function Spotlight({ className, fill = '#10B981' }: SpotlightProps) {
           <feGaussianBlur stdDeviation="151" result="effect1_foregroundBlur" />
         </filter>
       </defs>
-    </motion.svg>
+    </svg>
   );
 }

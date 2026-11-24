@@ -14,7 +14,7 @@ export function Footer() {
             >
               Funngro
             </Link>
-            <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-400">
+            <p className="mt-3 max-w-sm text-sm leading-relaxed text-slate-300">
               Connecting businesses with supervised young digital talent across web builds,
               content creation, software testing, and marketing.
             </p>
@@ -26,27 +26,27 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-3 md:col-start-7">
-            <h3 className="font-display text-sm font-semibold text-slate-200">
+            <h2 className="font-display text-sm font-semibold text-slate-100">
               Platform Pages
-            </h3>
-            <ul className="mt-4 space-y-2.5 text-sm text-slate-400">
+            </h2>
+            <ul className="mt-4 space-y-2.5 text-sm text-slate-300">
               <li>
-                <Link to="/company" className="transition-colors hover:text-emerald-400">
+                <Link to="/company" className="inline-block py-0.5 transition-colors hover:text-emerald-300">
                   For Companies (/company)
                 </Link>
               </li>
               <li>
-                <Link to="/teen" className="transition-colors hover:text-emerald-400">
+                <Link to="/teen" className="inline-block py-0.5 transition-colors hover:text-emerald-300">
                   For Teens (/teen)
                 </Link>
               </li>
               <li>
-                <a href="#how-it-works" className="transition-colors hover:text-emerald-400">
+                <a href="#how-it-works" className="inline-block py-0.5 transition-colors hover:text-emerald-300">
                   How It Works
                 </a>
               </li>
               <li>
-                <a href="#faq" className="transition-colors hover:text-emerald-400">
+                <a href="#faq" className="inline-block py-0.5 transition-colors hover:text-emerald-300">
                   Frequently Asked Questions
                 </a>
               </li>
@@ -54,16 +54,16 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-3">
-            <h3 className="font-display text-sm font-semibold text-slate-200">
+            <h2 className="font-display text-sm font-semibold text-slate-100">
               Official Funngro Resources
-            </h3>
-            <ul className="mt-4 space-y-2.5 text-sm text-slate-400">
+            </h2>
+            <ul className="mt-4 space-y-2.5 text-sm text-slate-300">
               <li>
                 <a
                   href={OFFICIAL_LINKS.website}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 transition-colors hover:text-emerald-400"
+                  className="inline-flex items-center gap-1.5 py-0.5 transition-colors hover:text-emerald-300"
                 >
                   <span>funngro.com</span>
                   <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -74,7 +74,7 @@ export function Footer() {
                   href={OFFICIAL_LINKS.googlePlay}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 transition-colors hover:text-emerald-400"
+                  className="inline-flex items-center gap-1.5 py-0.5 transition-colors hover:text-emerald-300"
                 >
                   <span>Google Play Store</span>
                   <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -85,7 +85,7 @@ export function Footer() {
                   href={OFFICIAL_LINKS.appStore}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 transition-colors hover:text-emerald-400"
+                  className="inline-flex items-center gap-1.5 py-0.5 transition-colors hover:text-emerald-300"
                 >
                   <span>Apple App Store</span>
                   <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
@@ -95,7 +95,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-slate-800/80 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center">
+        <div className="mt-12 flex flex-col items-start justify-between gap-4 border-t border-slate-800/80 pt-6 text-xs text-slate-400 sm:flex-row sm:items-center">
           <p>Unofficial Funngro Skill Assessment Redesign · Built with React, Tailwind CSS, Framer Motion &amp; React Router.</p>
           <p className="font-mono tabular-nums">Routes: /company · /teen</p>
         </div>

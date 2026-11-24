@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { cn } from '../../lib/utils';
 
 interface BackgroundBeamsProps {
@@ -13,8 +13,7 @@ const BEAM_PATHS = [
 ];
 
 /**
- * Aceternity UI BackgroundBeams component: architectural ambient curves
- * with subtle emerald stroke travel on dark navy canvas.
+ * Aceternity UI BackgroundBeams component using LazyMotion's lightweight `m`.
  */
 export function BackgroundBeams({ className }: BackgroundBeamsProps) {
   return (
@@ -41,7 +40,7 @@ export function BackgroundBeams({ className }: BackgroundBeamsProps) {
         {BEAM_PATHS.map((d, index) => (
           <g key={d}>
             <path d={d} stroke="rgba(148, 163, 184, 0.08)" strokeWidth="1" />
-            <motion.path
+            <m.path
               d={d}
               stroke="url(#emerald-beam-grad)"
               strokeWidth="1.25"

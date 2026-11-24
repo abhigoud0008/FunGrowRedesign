@@ -1,3 +1,5 @@
+import { MEDIA_ASSETS, type MediaAsset } from './mediaAssets';
+
 export interface FaqItem {
   id: string;
   question: string;
@@ -11,7 +13,7 @@ export interface TalentCategory {
   summary: string;
   deliverables: string[];
   idealFor: string;
-  imageSrc: string;
+  mediaAsset: MediaAsset;
   imageAlt: string;
 }
 
@@ -81,7 +83,7 @@ export const TALENT_CATEGORIES: TalentCategory[] = [
       'Cross-device browser layout verification',
     ],
     idealFor: 'Startups and D2C teams needing rapid web turnarounds',
-    imageSrc: '/src/assets/images/capability_web_engineering_1795535471362.jpg',
+    mediaAsset: MEDIA_ASSETS.capabilityWeb,
     imageAlt: 'Laptop displaying responsive website wireframes and clean frontend HTML code on a dark studio desk',
   },
   {
@@ -97,7 +99,7 @@ export const TALENT_CATEGORIES: TalentCategory[] = [
       'Podcast or webinar highlight cuts with captions',
     ],
     idealFor: 'Consumer brands building consistent organic media pipelines',
-    imageSrc: '/src/assets/images/capability_content_media_1795535471151.jpg',
+    mediaAsset: MEDIA_ASSETS.capabilityContent,
     imageAlt: 'Young creator adjusting a mirrorless camera on a desk tripod alongside a studio microphone and editing tablet',
   },
   {
@@ -113,7 +115,7 @@ export const TALENT_CATEGORIES: TalentCategory[] = [
       'Email campaign formatting and UTM link hygiene',
     ],
     idealFor: 'Marketing teams expanding reach among student and youth cohorts',
-    imageSrc: '/src/assets/images/hero_company_workspace_1795535470034.jpg',
+    mediaAsset: MEDIA_ASSETS.heroCompany,
     imageAlt: 'Product and marketing team reviewing analytics dashboards and campaign wireframes together',
   },
   {
@@ -129,7 +131,7 @@ export const TALENT_CATEGORIES: TalentCategory[] = [
       'Catalog tagging, spreadsheet cleanup, and desk research',
     ],
     idealFor: 'Product managers seeking fresh eyes before a release milestone',
-    imageSrc: '/src/assets/images/hero_teen_creator_1795535470988.jpg',
+    mediaAsset: MEDIA_ASSETS.heroTeen,
     imageAlt: 'Young developer testing a web application interface at a quiet desk workspace',
   },
 ];

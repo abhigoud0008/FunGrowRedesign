@@ -22,7 +22,7 @@ async function prerender() {
   ];
 
   for (const { route, outPath } of routes) {
-    const { html, headTags, seo } = renderRoute(route);
+    const { html, headTags, seo } = await renderRoute(route);
 
     let pageHtml = template
       .replace('<!--app-html-->', html)

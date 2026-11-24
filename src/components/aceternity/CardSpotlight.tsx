@@ -1,5 +1,5 @@
 import type { ReactNode, MouseEvent } from 'react';
-import { useMotionTemplate, useMotionValue, motion } from 'framer-motion';
+import { m, useMotionTemplate, useMotionValue } from 'framer-motion';
 import { cn } from '../../lib/utils';
 
 interface CardSpotlightProps {
@@ -9,7 +9,7 @@ interface CardSpotlightProps {
 
 /**
  * Aceternity UI CardSpotlight adapted for accessible high-contrast navy surfaces.
- * Uses hairline slate borders and cursor-following subtle emerald sheen.
+ * Uses LazyMotion `m.div` to minimize Framer Motion bundle weight.
  */
 export function CardSpotlight({ children, className }: CardSpotlightProps) {
   const mouseX = useMotionValue(-300);
@@ -37,7 +37,7 @@ export function CardSpotlight({ children, className }: CardSpotlightProps) {
         className
       )}
     >
-      <motion.div
+      <m.div
         className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-200 group-hover:opacity-100"
         style={{ background: spotlightBackground }}
         aria-hidden="true"
